@@ -1,644 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<title>Your Name | Portfolio</title>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
-        }
+<style>
 
-        /* NAVBAR */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #334155;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #09090f;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+/* BACKGROUND GLOW */
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+body::before {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: #7c3aed;
+    filter: blur(180px);
+    opacity: 0.25;
+    top: -150px;
+    left: -150px;
+    z-index: -1;
+}
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: #ec4899;
+    filter: blur(180px);
+    opacity: 0.18;
+    bottom: -150px;
+    right: -100px;
+    z-index: -1;
+}
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 8% 50px;
-            text-align: center;
-            background: linear-gradient(135deg, #0f172a, #172554);
-        }
+/* NAVBAR */
 
-        .profile-img {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #38bdf8;
-            margin-bottom: 25px;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .hero h1 {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
+    background: rgba(9, 9, 15, 0.75);
+    backdrop-filter: blur(15px);
 
-        .hero h1 span {
-            color: #38bdf8;
-        }
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 
-        .hero h2 {
-            font-size: 25px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
+    z-index: 1000;
+}
 
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #cbd5e1;
-        }
+.logo {
+    font-size: 25px;
+    font-weight: 800;
 
-        .buttons {
-            margin-top: 30px;
-        }
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            margin: 5px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
 
-        .primary {
-            background: #38bdf8;
-            color: #0f172a;
-        }
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
 
-        .secondary {
-            border: 2px solid #38bdf8;
-            color: #38bdf8;
-        }
+nav a:hover {
+    color: #c084fc;
+}
 
-        .btn:hover {
-            transform: translateY(-3px);
-            opacity: 0.85;
-        }
+/* HERO */
 
-        /* SECTIONS */
-        section {
-            padding: 90px 8%;
-        }
+.hero {
+    min-height: 100vh;
 
-        .section-title {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 45px;
-            color: #38bdf8;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
+    text-align: center;
 
-        /* ABOUT */
-        .about {
-            background: #111827;
-        }
+    padding: 120px 8% 70px;
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
+    background:
+        radial-gradient(circle at 50% 40%,
+        rgba(124,58,237,0.18),
+        transparent 40%);
+}
 
-        .about-text p {
-            color: #cbd5e1;
-            margin-bottom: 15px;
-        }
+.profile-img {
+    width: 180px;
+    height: 180px;
 
-        .info-box {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #334155;
-        }
+    object-fit: cover;
 
-        .info-box p {
-            margin: 10px 0;
-        }
+    border-radius: 50%;
 
-        .info-box strong {
-            color: #38bdf8;
-        }
+    border: 4px solid transparent;
 
-        /* SKILLS */
-        .skills {
-            background: #0f172a;
-        }
+    background:
+        linear-gradient(#09090f,#09090f) padding-box,
+        linear-gradient(135deg,#a855f7,#ec4899) border-box;
 
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    box-shadow:
+        0 0 50px rgba(168,85,247,0.35);
 
-        .skill {
-            background: #1e293b;
-            padding: 25px;
-            text-align: center;
-            border-radius: 15px;
-            border: 1px solid #334155;
-            transition: 0.3s;
-        }
+    margin-bottom: 25px;
+}
 
-        .skill:hover {
-            transform: translateY(-8px);
-            border-color: #38bdf8;
-        }
+.hero h1 {
+    font-size: clamp(40px, 7vw, 75px);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
 
-        .skill h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
-        }
+.hero h1 span {
+    background: linear-gradient(
+        90deg,
+        #a855f7,
+        #ec4899,
+        #f472b6
+    );
 
-        /* PROJECTS */
-        .projects {
-            background: #111827;
-        }
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.hero h2 {
+    font-size: 22px;
+    color: #b8b8c7;
+    margin-bottom: 20px;
+}
 
-        .project {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid #334155;
-            transition: 0.3s;
-        }
+.hero p {
+    max-width: 650px;
+    margin: auto;
 
-        .project:hover {
-            transform: translateY(-8px);
-            border-color: #38bdf8;
-        }
+    color: #a1a1aa;
+    font-size: 16px;
+}
 
-        .project h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
-        }
+/* BUTTONS */
 
-        .project p {
-            color: #cbd5e1;
-        }
+.buttons {
+    margin-top: 30px;
+}
 
-        /* EDUCATION */
-        .education {
-            background: #0f172a;
-        }
+.btn {
+    display: inline-block;
 
-        .education-card {
-            background: #1e293b;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-left: 5px solid #38bdf8;
-            border-radius: 10px;
-        }
+    padding: 13px 28px;
 
-        .education-card h3 {
-            color: #38bdf8;
-        }
+    margin: 5px;
 
-        .education-card p {
-            color: #cbd5e1;
-        }
+    border-radius: 30px;
 
-        /* CONTACT */
-        .contact {
-            background: #111827;
-            text-align: center;
-        }
+    text-decoration: none;
 
-        .contact p {
-            margin: 12px 0;
-            color: #cbd5e1;
-        }
+    font-weight: 600;
 
-        .contact a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
+    transition: 0.3s;
+}
 
-        /* SOCIAL */
-        .social {
-            margin-top: 25px;
-        }
+.primary {
+    color: white;
 
-        .social a {
-            display: inline-block;
-            margin: 8px;
-            padding: 10px 18px;
-            border: 1px solid #38bdf8;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
+    background:
+        linear-gradient(135deg,#7c3aed,#ec4899);
 
-        .social a:hover {
-            background: #38bdf8;
-            color: #0f172a;
-        }
+    box-shadow:
+        0 10px 30px rgba(124,58,237,0.25);
+}
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #020617;
-            color: #94a3b8;
-        }
+.secondary {
+    color: #d8b4fe;
 
-        /* MOBILE */
-        @media (max-width: 768px) {
+    border: 1px solid #7c3aed;
 
-            nav {
-                padding: 15px 5%;
-            }
+    background: rgba(124,58,237,0.05);
+}
 
-            nav ul {
-                gap: 10px;
-                font-size: 13px;
-            }
+.btn:hover {
+    transform: translateY(-5px);
+}
 
-            .hero h1 {
-                font-size: 38px;
-            }
+/* SECTIONS */
 
-            .hero h2 {
-                font-size: 20px;
-            }
+section {
+    padding: 100px 8%;
+}
 
-            .about-content {
-                grid-template-columns: 1fr;
-            }
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
 
-            .skill-grid,
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
+.section-title {
+    text-align: center;
 
-            section {
-                padding: 70px 5%;
-            }
-        }
-    </style>
+    font-size: 38px;
+
+    margin-bottom: 55px;
+
+    background:
+        linear-gradient(90deg,#c084fc,#f472b6);
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* GLASS CARD */
+
+.glass {
+    background: rgba(255,255,255,0.045);
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.25);
+}
+
+/* ABOUT */
+
+.about-content {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.about-text,
+.info-box {
+    padding: 35px;
+}
+
+.about-text p {
+    color: #b4b4c0;
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+}
+
+.info-box strong {
+    color: #c084fc;
+}
+
+/* SKILLS */
+
+.skill-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+}
+
+.skill {
+    padding: 30px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    transition: 0.35s;
+}
+
+.skill:hover {
+    transform: translateY(-8px);
+
+    border-color: #a855f7;
+
+    box-shadow:
+        0 15px 40px rgba(124,58,237,0.18);
+}
+
+.skill h3 {
+    color: #d8b4fe;
+
+    margin-bottom: 10px;
+}
+
+.skill p {
+    color: #9999a8;
+}
+
+/* PROJECTS */
+
+.project-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 25px;
+}
+
+.project {
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(124,58,237,0.12),
+            rgba(236,72,153,0.05)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    border-radius: 20px;
+
+    transition: 0.35s;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+
+    border-color: #c084fc;
+
+    box-shadow:
+        0 20px 50px rgba(124,58,237,0.18);
+}
+
+.project h3 {
+    color: #e9d5ff;
+
+    margin-bottom: 12px;
+}
+
+.project p {
+    color: #a1a1aa;
+}
+
+/* EDUCATION */
+
+.education-card {
+    padding: 30px;
+
+    margin-bottom: 20px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border-radius: 18px;
+
+    border-left:
+        4px solid #a855f7;
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+
+    border-right:
+        1px solid rgba(255,255,255,0.06);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+}
+
+.education-card h3 {
+    color: #d8b4fe;
+
+    margin-bottom: 8px;
+}
+
+.education-card p {
+    color: #a1a1aa;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(124,58,237,0.12),
+            transparent 50%
+        );
+}
+
+.contact p {
+    margin: 12px 0;
+
+    color: #aaa;
+}
+
+.contact a {
+    color: #c084fc;
+
+    text-decoration: none;
+}
+
+.social {
+    margin-top: 30px;
+}
+
+.social a {
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    margin: 6px;
+
+    border:
+        1px solid rgba(168,85,247,0.5);
+
+    border-radius: 25px;
+
+    transition: 0.3s;
+}
+
+.social a:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #ec4899
+        );
+
+    color: white;
+
+    border-color: transparent;
+
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    background: #050507;
+
+    color: #71717a;
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 75px 5%;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">MyPortfolio</div>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<!-- NAVBAR -->
 
+<nav>
 
-    <!-- HOME -->
-    <section class="hero" id="home">
+    <div class="logo">
+        MyPortfolio
+    </div>
 
-        <div>
+    <ul>
 
-            <!-- Replace profile.jpg with your photo -->
-            <img src="profile.jpg" alt="Profile Photo" class="profile-img">
+        <li>
+            <a href="#home">Home</a>
+        </li>
 
-            <h1>Hello, I'm <span>Rhutuja</span></h1>
+        <li>
+            <a href="#about">About</a>
+        </li>
 
-            <h2>Student  Technology Enthusiast</h2>
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
 
-            <p>
-                Welcome to my personal profile. I am a passionate student
-                interested in technology, programming, web development and
-                creating innovative projects.
-            </p>
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
 
-            <div class="buttons">
-                <a href="#projects" class="btn primary">View My Projects</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
-            </div>
+        <li>
+            <a href="#education">Education</a>
+        </li>
 
-        </div>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
 
-    </section>
+    </ul>
 
+</nav>
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
 
-        <div class="container">
+<!-- HERO -->
 
-            <h2 class="section-title">About Me</h2>
+<section class="hero" id="home">
 
-            <div class="about-content">
+    <div>
 
-                <div class="about-text">
+        <img
+            src="profile.jpg"
+            class="profile-img"
+            alt="Profile Photo"
+        >
 
-                    <p>
-                        Hello! I am <strong>Rhutuja Adhatrao</strong>, a student
-                        passionate about learning new technologies and
-                        developing useful software applications.
-                    </p>
+        <h1>
+            Hi, I'm
+            <span>Rhutuja</span>
+        </h1>
 
-                    <p>
-                        I enjoy working on programming projects, exploring
-                        cloud computing, web development and solving
-                        real-world problems using technology.
-                    </p>
-
-                    <p>
-                        My goal is to continuously improve my technical
-                        knowledge and build projects that provide practical
-                        solutions.
-                    </p>
-
-                </div>
-
-                <div class="info-box">
-
-                    <p><strong>Name:</strong> Your Name</p>
-
-                    <p><strong>Course:</strong> B.E</p>
-
-                    <p><strong>College:</strong> Thakur College of Engineering and Technology</p>
-
-                    <p><strong>Location:</strong> India</p>
-
-                    <p><strong>Interest:</strong> Web Development, Cloud Computing</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
-
-        <div class="container">
-
-            <h2 class="section-title">My Skills</h2>
-
-            <div class="skill-grid">
-
-                <div class="skill">
-                    <h3>HTML</h3>
-                    <p>Creating structured and responsive web pages.</p>
-                </div>
-
-                <div class="skill">
-                    <h3>CSS</h3>
-                    <p>Designing modern and responsive interfaces.</p>
-                </div>
-
-                <div class="skill">
-                    <h3>Java</h3>
-                    <p>Object-oriented programming and application development.</p>
-                </div>
-
-                <div class="skill">
-                    <h3>Cloud Computing</h3>
-                    <p>Learning cloud platforms and cloud-based applications.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section class="projects" id="projects">
-
-        <div class="container">
-
-            <h2 class="section-title">My Projects</h2>
-
-            <div class="project-grid">
-
-                <div class="project">
-
-                    <h3>Sports Team Management</h3>
-
-                    <p>
-                        A web application for managing sports teams,
-                        players and team-related information.
-                    </p>
-
-                </div>
-
-                <div class="project">
-
-                    <h3>Cloud Attendance System</h3>
-
-                    <p>
-                        A cloud-based attendance management system with
-                        QR-code attendance functionality.
-                    </p>
-
-                </div>
-
-                <div class="project">
-
-                    <h3>Task Manager</h3>
-
-                    <p>
-                        A web-based task management application for
-                        organizing and tracking daily tasks.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section class="education" id="education">
-
-        <div class="container">
-
-            <h2 class="section-title">Education</h2>
-
-            <div class="education-card">
-
-                <h3>Bachelor's Degree</h3>
-
-                <p>
-                    <strong>College:</strong> Thakur College of Engineeering and Technology
-                </p>
-
-                <p>
-                    <strong>Course:</strong> IT
-                </p>
-
-                <p>
-                    <strong>Year:</strong> 2025 - Present
-                </p>
-
-            </div>
-
-
-            <div class="education-card">
-
-                <h3>Higher Secondary Education</h3>
-
-                <p>
-                    St. John's High School
-                </p>
-
-                <p>
-                    Completed in 2023
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-
-        <div class="container">
-
-            <h2 class="section-title">Contact Me</h2>
-
-            <p>
-                📧 Email:
-                <a href="mailto:yourmail@example.com">
-                    rhutujaadhatrao1@example.com
-                </a>
-            </p>
-
-            <p>
-                📱 Phone: +91 XXXXX XXXXX
-            </p>
-
-            <p>
-                📍 Location: India
-            </p>
-
-
-            <div class="social">
-
-                <a href="https://github.com/" target="_blank">
-                    GitHub
-                </a>
-
-                <a href="https://linkedin.com/" target="_blank">
-                    LinkedIn
-                </a>
-
-                <a href="https://instagram.com/" target="_blank">
-                    Instagram
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
+        <h2>
+            Student • Developer • Creator
+        </h2>
 
         <p>
-            © 2026 Your Name. All Rights Reserved.
+            I am a passionate student interested in
+            technology, programming, web development
+            and building innovative digital solutions.
         </p>
 
-    </footer>
+        <div class="buttons">
+
+            <a
+                href="#projects"
+                class="btn primary"
+            >
+                Explore My Work
+            </a>
+
+            <a
+                href="#contact"
+                class="btn secondary"
+            >
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- JAVASCRIPT -->
-    <script>
+<!-- ABOUT -->
 
-        // Simple welcome message
-        console.log("Welcome to my profile website!");
+<section id="about">
 
-        // Change navigation style when scrolling
-        window.addEventListener("scroll", function () {
+    <div class="container">
 
-            const nav = document.querySelector("nav");
+        <h2 class="section-title">
+            About Me
+        </h2>
 
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = "0 4px 20px rgba(0,0,0,0.3)";
-            } else {
-                nav.style.boxShadow = "none";
-            }
+        <div class="about-content">
 
-        });
+            <div class="about-text glass">
 
-    </script>
+                <p>
+                    Hello! I'm
+                    <strong>Rhutuja</strong>.
+                    I am a student who enjoys learning
+                    new technologies and creating
+                    practical projects.
+                </p>
+
+                <p>
+                    My interests include web development,
+                    cloud computing, programming and
+                    software development.
+                </p>
+
+                <p>
+                    I enjoy turning ideas into real
+                    applications and continuously
+                    improving my technical skills.
+                </p>
+
+            </div>
+
+
+            <div class="info-box glass">
+
+                <p>
+                    <strong>Name:</strong>
+                    Rhutuja Adhatrao
+                </p>
+
+                <p>
+                    <strong>Course:</strong>
+                    B.E
+                </p>
+
+                <p>
+                    <strong>College:</strong>
+                    Thakur College of Engineering and Technology
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    India
+                </p>
+
+                <p>
+                    <strong>Interests:</strong>
+                    Technology & Development
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Skills
+        </h2>
+
+        <div class="skill-grid">
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>
+                    Modern and semantic web development.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>
+                    Responsive and attractive interfaces.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <p>
+                    Interactive web applications.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>Java</h3>
+                <p>
+                    Object-oriented programming.
+                </p>
+            </div>
+
+            <div class="skill">
+                <h3>Cloud Computing</h3>
+                <p>
+                    Cloud-based application development.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            My Projects
+        </h2>
+
+        <div class="project-grid">
+
+            <div class="project">
+
+                <h3>
+                    Sports Team Management
+                </h3>
+
+                <p>
+                    A web application for managing
+                    sports teams, players and
+                    team information.
+                </p>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>
+                    Cloud Attendance System
+                </h3>
+
+                <p>
+                    A cloud-based attendance system
+                    with QR-code attendance
+                    functionality.
+                </p>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>
+                    Task Manager
+                </h3>
+
+                <p>
+                    A web application for creating,
+                    managing and tracking tasks.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Education
+        </h2>
+
+        <div class="education-card">
+
+            <h3>
+                Bachelor's Degree
+            </h3>
+
+            <p>
+                Thakur College Of Engineering and Technology
+            </p>
+
+            <p>
+                Information Technology
+            </p>
+
+            <p>
+                2025 - Present
+            </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+            <h3>
+                Higher Secondary Education
+            </h3>
+
+            <p>
+                St. John's High School
+            </p>
+
+            <p>
+                Completed in 2023
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Let's Connect
+        </h2>
+
+        <p>
+            📧
+            <a href="mailto:yourmail@example.com">
+                rhutujaadhatrao1@example.com
+            </a>
+        </p>
+
+        <p>
+            📱 +91 XXXXX XXXXX
+        </p>
+
+        <p>
+            📍 India
+        </p>
+
+
+        <div class="social">
+
+            <a
+                href="https://github.com/"
+                target="_blank"
+            >
+                GitHub
+            </a>
+
+            <a
+                href="https://linkedin.com/"
+                target="_blank"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                href="https://instagram.com/"
+                target="_blank"
+            >
+                Instagram
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Your Name • All Rights Reserved
+
+</footer>
+
+
+<script>
+
+/* NAVBAR SHADOW */
+
+window.addEventListener("scroll", function() {
+
+    const nav = document.querySelector("nav");
+
+    if (window.scrollY > 50) {
+
+        nav.style.boxShadow =
+            "0 10px 40px rgba(0,0,0,0.35)";
+
+    } else {
+
+        nav.style.boxShadow = "none";
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
+
+      
